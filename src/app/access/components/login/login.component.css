@@ -1,0 +1,45 @@
+
+
+ /* login.component.css */
+.mat-dialog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.card {
+  width: 400px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.card-header {
+  border: none;
+  border-bottom-left-radius: 2.5rem;
+  border-bottom-right-radius: 2.5rem;
+}
+
+.btn-primary {
+  background-color:  #75b1f1;
+  border-color:  #75b1f1;
+}
+
+.btn-primary:hover {
+  background-color: #75b1f1;
+  border-color:  #75b1f1;
+}
+
+ a {
+  color:  #75b1f1;
+}
+
+.form-group input {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+button{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+}

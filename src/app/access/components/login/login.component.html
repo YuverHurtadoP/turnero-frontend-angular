@@ -1,0 +1,39 @@
+ <!-- login.component.html -->
+<div class="mat-dialog-container">
+  <div class="card">
+    <div class="card-header   text-white text-center" style="background-color:  #75b1f1;">
+      <h4 class="mb-0">
+        <mat-icon style="color: white; font-size: 2rem;">how_to_reg</mat-icon> Iniciar Sesión
+      </h4>
+    </div>
+    <div class="card-body">
+
+      <form>
+
+
+        <div class="form-group" style="margin-bottom: 5%;">
+
+          <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario" [(ngModel)]="username" name="username" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 7%;">
+
+          <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" [(ngModel)]="password" name="password" required>
+        </div>
+
+        <div style="display: grid;place-items: center; margin-bottom:3px ; ">
+          <button type="submit" class="btn btn-primary btn-block" (click)="login()">Iniciar Sesión</button>
+        </div>
+
+        <div class=" text-center">
+          <a href="#">Recuperar acceso</a>
+        </div>
+
+      </form>
+    </div>
+    <div class="card-footer text-center">
+      ¿No tienes cuenta? <a href="#">Regístrate aquí</a>
+    </div>
+  </div>
+</div>
+
+
