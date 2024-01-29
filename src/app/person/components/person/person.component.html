@@ -1,0 +1,114 @@
+ <!-- login.component.html -->
+ <div class="mat-dialog-container">
+  <div class="card">
+    <div class="card-header   text-white text-center" style="background-color:  black;">
+      <h4 class="mb-0">
+        <mat-icon style="color: white; font-size: 2rem;">how_to_reg</mat-icon> Formulario de registro Registro
+      </h4>
+    </div>
+    <div class="card-body">
+
+      <form   [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+        <div class="columnDivision spaceBottom"  >
+          <!--column 1-->
+          <div>
+            <select formControlName="documentType" class="form-select" aria-label="Default select example">
+              <option value="">Tipo documento</option>
+              <option value="">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <div class="error" *ngIf="formRegister.get('documentType')?.touched && formRegister.get('documentType')?.hasError?.('havespace')">{{msg}}</div>
+        </div>
+         <!--column 2-->
+
+          <div>
+            <input type="number" formControlName="document" class="form-control" id="document" placeholder="Documento" name="document" required>
+            <div class="error" *ngIf="formRegister.get('document')?.touched && formRegister.get('document')?.hasError('required')">{{msg}}</div>
+          </div>
+        </div>
+
+        <div class="columnDivision spaceBottom"  >
+          <!--column 1-->
+          <div>
+            <select formControlName="department" class="form-select" aria-label="Default select example">
+              <option value="">Departamento</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <div class="error" *ngIf="formRegister.get('department')?.touched && formRegister.get('department')?.hasError?.('havespace')">{{msg}}</div>
+        </div>
+         <!--column 2-->
+
+         <div>
+          <select formControlName="municipality" class="form-select" aria-label="Default select example">
+            <option selected>Municipio</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <div class="error" *ngIf="formRegister.get('municipality')?.touched && formRegister.get('municipality')?.hasError?.('havespace')">{{msg}}</div>
+        </div>
+        </div>
+
+        <div class="columnDivision spaceBottom"  >
+          <!--column 1-->
+          <div>
+            <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nombres" name="name" required>
+            <div class="error" *ngIf="formRegister.get('name')?.touched && formRegister.get('name')?.hasError?.('havespace')">{{msg}}</div>
+
+        </div>
+         <!--column 2-->
+
+          <div>
+            <input type="text" formControlName="lasname" class="form-control" id="username" placeholder="Apellidos" name="username" required>
+            <div class="error" *ngIf="formRegister.get('lasname')?.touched && formRegister.get('lasname')?.hasError?.('havespace')">{{msg}}</div>
+
+          </div>
+        </div>
+
+        <div class="form-group spaceBottom"  >
+
+          <input type="text" formControlName="phone" class="form-control" id="username" placeholder="Celular" name="username" required>
+          <div class="error" *ngIf="formRegister.get('phone')?.touched && formRegister.get('phone')?.hasError?.('havespace')">{{msg}}</div>
+
+        </div>
+
+        <div class="form-group spaceBottom"  >
+
+          <input type="text" formControlName="email" class="form-control" id="username" placeholder="Correo electrónico" name="username" required>
+          <div class="error" *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.hasError('required')">El correo electrónico es requerido.</div>
+          <div  class="error" *ngIf="formRegister.get('email')?.touched && formRegister.get('email')?.hasError('email')">Formato de email inválido.</div>
+
+        </div>
+
+
+        <div class="columnDivision spaceBottom"  >
+          <!--column 1-->
+          <div>
+
+          <input formControlName="password" type="password" class="form-control" id="password" placeholder="Contraseña"   name="password" required>
+          <div class="error" *ngIf="formRegister.get('password')?.touched && formRegister.get('password')?.hasError?.('havespace')">{{msg}}</div>
+
+        </div>
+         <!--column 2-->
+
+         <div>
+
+          <input formControlName="passwordConfirm" type="password" class="form-control" id="password" placeholder="Confirmar contraseña"   name="password" required>
+          <div class="error" *ngIf="formRegister.get('passwordConfirm')?.touched && formRegister.get('passwordConfirm')?.hasError?.('havespace')">{{msg}}</div>
+
+        </div>
+        </div>
+
+        <div style="display: grid;place-items: center; margin-bottom:3px ; ">
+          <button type="submit" class="btn btn-primary btn-block"  style="background-color: black;" >Guardar</button>
+        </div>
+
+
+      </form>
+    </div>
+
+  </div>
+</div>

@@ -17,3 +17,7 @@ width:100%;
 
 
 }
+
+input::placeholder {
+  font-size: 14px;
+}

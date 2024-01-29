@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { RecoveryPasswordComponent } from '../recovery-password/recovery-password.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/utils/custom-validators';
+import { PersonComponent } from 'src/app/person/components/person/person.component';
 
 
 @Component({
@@ -37,6 +38,11 @@ export class LoginComponent   {
   openRecovery(): void {
     this.dialogRef.close();
     this.dialog.open(RecoveryPasswordComponent, { width: '400px',  });
+  }
+
+  openRegister(): void {
+    this.dialogRef.close();
+    this.dialog.open(PersonComponent, { width: '500px',  });
   }
 
 

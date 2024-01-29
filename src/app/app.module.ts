@@ -16,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { RecoveryPasswordComponent } from './access/components/recovery-password/recovery-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PersonComponent } from './person/components/person/person.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     HttpClientModule,
     RecoveryPasswordComponent,
+    PersonComponent,
     ReactiveFormsModule
 
   ],
