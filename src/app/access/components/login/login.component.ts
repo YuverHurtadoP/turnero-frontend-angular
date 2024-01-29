@@ -1,5 +1,15 @@
+
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LoginDto } from '../../dto/request/login-dto';
+import { TokenDto } from '../../dto/response/token-dto';
+import { AccessService } from '../../service/access.service';
+import Swal from 'sweetalert2';
+import { RecoveryPasswordComponent } from '../recovery-password/recovery-password.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidators } from 'src/app/utils/custom-validators';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,18 +17,70 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class LoginComponent   {
 
-  constructor(){}
+  private dto: LoginDto = new LoginDto;
+  private token:TokenDto = new TokenDto;
+
+  private accessService:AccessService;
+
+  formLogin: FormGroup;
+
+  constructor(private fb: FormBuilder,accessService:AccessService, public dialog: MatDialog,public dialogRef: MatDialogRef<LoginComponent>){
+    this.accessService = accessService;
+    this.formLogin = this.fb.group({
+      pass: ['', Validators.required],
+      username: ['', [Validators.required, Validators.email]],
+
+    });
+  }
 
 
-  username: string = '';
-  password: string = '';
+  openRecovery(): void {
+    this.dialogRef.close();
+    this.dialog.open(RecoveryPasswordComponent, { width: '400px',  });
+  }
 
-  login() {
-    // Aquí puedes agregar la lógica para manejar el inicio de sesión
-    console.log('Usuario:', this.username);
-    console.log('Contraseña:', this.password);
-    // Puedes llamar a tu servicio de autenticación o realizar otras acciones según tus necesidades
+
+  private markFieldsAsTouched(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      if (control instanceof FormGroup) {
+        this.markFieldsAsTouched(control);
+      } else {
+        control.markAsTouched();
+      }
+    });
+  }
+
+  onSubmit() {
+
+    if (this.formLogin.valid) {
+      console.log("l")
+    this.dto.username = this.formLogin.get("username")?.value;
+    this.dto.password =  this.formLogin.get("pass")?.value;
+    this.accessService.login(this.dto).subscribe({
+
+      next: (response)=>{
+        console.log("l")
+        this.token = response;
+        console.log(this.token);
+      },
+      error: (e) => {
+        console.log(e)
+        Swal.fire({
+          title: "Error",
+          icon: "error",
+          text: "Credenciales incorrectas",
+          confirmButtonText: "Aceptar",
+
+          showCloseButton: true,
+        });
+      }
+    });
+    } else {
+
+      this.markFieldsAsTouched(this.formLogin);
+    }
   }
 
 
 }
+

@@ -8,24 +8,30 @@
     </div>
     <div class="card-body">
 
-      <form>
+      <form  [formGroup]="formLogin" (ngSubmit)="onSubmit()">
 
 
         <div class="form-group" style="margin-bottom: 5%;">
 
-          <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario" [(ngModel)]="username" name="username" required>
+          <input type="text" formControlName="username" class="form-control" id="username" placeholder="Ingrese su correo electrónico" name="username" required>
+          <div class="error" *ngIf="formLogin.get('username')?.touched && formLogin.get('username')?.hasError('required')">El correo electrónico es requerido.</div>
+          <div  class="error" *ngIf="formLogin.get('username')?.touched && formLogin.get('username')?.hasError('email')">Formato de email inválido.</div>
+
         </div>
         <div class="form-group" style="margin-bottom: 7%;">
 
-          <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña" [(ngModel)]="password" name="password" required>
+          <input formControlName="pass" type="password" class="form-control" id="password" placeholder="Ingrese su contraseña"   name="password" required>
+          <div class="error" *ngIf="formLogin.get('pass')?.touched && formLogin.get('pass')?.hasError('required')">El campo es requerido.</div>
+          <div *ngIf="formLogin.get('pass')?.touched && formLogin.get('pass')?.hasError('havespace')">No puedes ingresar solo espacios en blanco.</div>
         </div>
 
+
         <div style="display: grid;place-items: center; margin-bottom:3px ; ">
-          <button type="submit" class="btn btn-primary btn-block" (click)="login()">Iniciar Sesión</button>
+          <button type="submit" (click)="onSubmit()" class="btn btn-primary btn-block"  >Iniciar Sesión</button>
         </div>
 
         <div class=" text-center">
-          <a href="#">Recuperar acceso</a>
+          <a (click)=" openRecovery()" >Recuperar acceso</a>
         </div>
 
       </form>

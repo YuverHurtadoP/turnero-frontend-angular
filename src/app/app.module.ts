@@ -13,6 +13,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input'; // Este módulo también es necesario para el matInput
 import { MatFormFieldModule } from '@angular/material/form-field'; // Este módulo también es necesario para el matFormField
 import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { RecoveryPasswordComponent } from './access/components/recovery-password/recovery-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +33,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
+    HttpClientModule,
+    RecoveryPasswordComponent,
+    ReactiveFormsModule
 
   ],
   providers: [],
