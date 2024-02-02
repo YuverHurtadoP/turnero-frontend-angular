@@ -59,13 +59,13 @@ export class LoginComponent   {
   onSubmit() {
 
     if (this.formLogin.valid) {
-      console.log("l")
+
     this.dto.username = this.formLogin.get("username")?.value;
     this.dto.password =  this.formLogin.get("pass")?.value;
     this.accessService.login(this.dto).subscribe({
 
       next: (response)=>{
-        console.log("l")
+
         this.token = response;
         console.log(this.token);
       },
